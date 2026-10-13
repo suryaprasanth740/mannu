@@ -1,5 +1,6 @@
 # Render.com Blueprint — one free web service serving the API and the React app.
-# You will be asked for MONGODB_URI (MongoDB Atlas) and CLOUDINARY_URL when you create it.
+# You will be asked for MONGODB_URI (MongoDB Atlas) when you create it.
+# Optional: add CLOUDINARY_URL later under Environment so farmers' uploaded photos survive redeploys.
 services:
   - type: web
     name: mannu
@@ -19,6 +20,4 @@ services:
       - key: SEED_DEMO_DATA
         value: "true"
       - key: MONGODB_URI
-        sync: false
-      - key: CLOUDINARY_URL
         sync: false

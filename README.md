@@ -94,7 +94,7 @@ The browser test: farmer adds a product with a photo and bulk price → customer
 
 The production build is **one service**: Express serves the API and the built React app from the same origin.
 
-**Render.com (free)** — push this folder to GitHub, then in Render choose **New → Blueprint**, pick the repository, and enter `MONGODB_URI` (MongoDB Atlas, with Network Access allowing `0.0.0.0/0`) and `CLOUDINARY_URL` when asked. `render.yaml` does the rest: it builds the React app, generates `JWT_SECRET`, and sets `SEED_DEMO_DATA=true` so the demo farms and accounts load automatically the first time the database is empty (it never touches a database that already has users). Free Render services sleep after 15 minutes without visitors, so the first visit after a pause takes about a minute.
+**Render.com (free)** — push this folder to GitHub, then in Render choose **New → Blueprint**, pick the repository, and enter `MONGODB_URI` (MongoDB Atlas, with Network Access allowing `0.0.0.0/0`) when asked. Add `CLOUDINARY_URL` later under the service's Environment tab so photos farmers upload survive redeploys. `render.yaml` does the rest: it builds the React app, generates `JWT_SECRET`, and sets `SEED_DEMO_DATA=true` so the demo farms and accounts load automatically the first time the database is empty (it never touches a database that already has users). Free Render services sleep after 15 minutes without visitors, so the first visit after a pause takes about a minute.
 
 **Docker / any VPS**
 
