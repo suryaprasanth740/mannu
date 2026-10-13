@@ -1,0 +1,21 @@
+{
+  "name": "mannu",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Mannu — farmer-to-customer marketplace (React + Express + MongoDB)",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c green,yellow \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server -- --reset",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "test": "npm test --prefix server",
+    "images:localize": "npm run images:localize --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

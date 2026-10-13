@@ -1,0 +1,24 @@
+# Render.com Blueprint — one free web service serving the API and the React app.
+# You will be asked for MONGODB_URI (MongoDB Atlas) and CLOUDINARY_URL when you create it.
+services:
+  - type: web
+    name: mannu
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --prefix server && npm ci --prefix client --include=dev && npm run build --prefix client
+    startCommand: npm start --prefix server
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false

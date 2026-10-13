@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-leaf-950: #0b2e1a;
+  --color-leaf-900: #0f3d22;
+  --color-leaf-800: #175230;
+  --color-leaf-700: #1f6b3a;
+  --color-leaf-600: #2a8049;
+  --color-leaf-500: #3d9a5c;
+  --color-leaf-200: #c9e1c6;
+  --color-leaf-100: #e4f0e0;
+  --color-leaf-50: #f3f8f1;
+  --color-turmeric-600: #c9850a;
+  --color-turmeric-500: #e8a317;
+  --color-turmeric-100: #fdf1d4;
+  --color-chilli-600: #b5352a;
+  --color-chilli-100: #fbe6e3;
+  --color-soil-900: #2e251d;
+  --color-soil-700: #4a3d31;
+  --color-soil-500: #7a6b5d;
+  --color-soil-300: #b5aa9e;
+  --color-line: #dfe8da;
+
+  --font-display: 'Bricolage Grotesque', 'Noto Sans Kannada', 'Noto Sans Tamil', 'Noto Sans Telugu', system-ui, sans-serif;
+  --font-sans: 'Noto Sans', 'Noto Sans Kannada', 'Noto Sans Tamil', 'Noto Sans Telugu', system-ui, sans-serif;
+
+  --radius-tile: 1.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-soil-900 antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-leaf-950;
+    letter-spacing: -0.01em;
+  }
+  :lang(kn) h1,
+  :lang(ta) h1,
+  :lang(te) h1,
+  :lang(kn) h2,
+  :lang(ta) h2,
+  :lang(te) h2 {
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-turmeric-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-leaf-700 text-white hover:bg-leaf-800;
+}
+@utility btn-accent {
+  @apply btn bg-turmeric-500 text-leaf-950 hover:bg-turmeric-600;
+}
+@utility btn-outline {
+  @apply btn border border-leaf-200 bg-white text-leaf-800 hover:border-leaf-600;
+}
+@utility btn-ghost {
+  @apply btn text-leaf-800 hover:bg-leaf-50;
+}
+@utility btn-danger {
+  @apply btn border border-chilli-600/30 bg-white text-chilli-600 hover:bg-chilli-100;
+}
+@utility btn-sm {
+  @apply px-3.5 py-1.5 text-sm;
+}
+@utility btn-lg {
+  @apply px-7 py-3.5 text-base;
+}
+@utility input {
+  @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[15px] text-soil-900 placeholder:text-soil-300 focus:border-leaf-600 focus:ring-2 focus:ring-leaf-200 focus:outline-none;
+}
+@utility input-error {
+  @apply border-chilli-600 focus:border-chilli-600 focus:ring-chilli-100;
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-semibold text-soil-700;
+}
+@utility panel {
+  @apply rounded-tile border border-line bg-white;
+}
+@utility chip {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+@utility container-page {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+@utility link {
+  @apply font-semibold text-leaf-700 underline decoration-leaf-200 underline-offset-4 hover:decoration-leaf-600;
+}
+
+.kolam-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.13' stroke-width='1.6'%3E%3Cpath d='M28 6c12 0 22 10 22 22S40 50 28 50 6 40 6 28 16 6 28 6Z'/%3E%3Cpath d='M28 6c0 12 10 22 22 22M28 6c0 12-10 22-22 22M28 50c0-12 10-22 22-22M28 50c0-12-10-22-22-22'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='.22'%3E%3Ccircle cx='28' cy='17' r='1.8'/%3E%3Ccircle cx='28' cy='39' r='1.8'/%3E%3Ccircle cx='17' cy='28' r='1.8'/%3E%3Ccircle cx='39' cy='28' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.harvest-rise > * {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.harvest-rise > *:nth-child(2) { animation-delay: 0.08s; }
+.harvest-rise > *:nth-child(3) { animation-delay: 0.16s; }
+.harvest-rise > *:nth-child(4) { animation-delay: 0.24s; }
